@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 
 namespace CommonLibs.Implementations
 {
-    class ScreenshotControl : IScreenshot
+    public class ScreenshotControl : IScreenshot
     {
         ITakesScreenshot camera;
 

@@ -12,17 +12,11 @@ namespace CommonLibs.Demo
 
         static void Main(string[] args)
         {
-            CommonDriver commonDriver = new CommonDriver("chrome");
+            CommonBrowserDriver.Driver.Url = "https://qatechhub.com";
 
-            commonDriver.NavigateToFirstUrl("https://amazon.in");
+            CommonBrowserDriver.Driver.Close();
 
-            ElementControl elementControl = new ElementControl();
-
-            string titleOfThePage = commonDriver.GetTitle();
-
-            Console.WriteLine(titleOfThePage);
-
-            commonDriver.CloseAllBrowsers();
+            
         }
     }
 }

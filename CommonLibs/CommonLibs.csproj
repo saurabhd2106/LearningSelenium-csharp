@@ -49,6 +49,8 @@
     <Compile Include="Contracts\IWindowControl.cs" />
     <Compile Include="Demo\DemoAmazonHomePage.cs" />
     <Compile Include="Implementations\AlertControl.cs" />
+    <Compile Include="Implementations\CommonBrowserDriver.cs" />
+    <Compile Include="Implementations\CommonDriverTest.cs" />
     <Compile Include="Implementations\JavaScrpitControl.cs" />
     <Compile Include="Implementations\CommonDriver.cs" />
     <Compile Include="Implementations\DropDownControl.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Implementations\FrameControl.cs" />
     <Compile Include="Implementations\ScreenshotControl.cs" />
     <Compile Include="Implementations\WindowsControl.cs" />
+    <Compile Include="Utils\DateTimeUtils.cs" />
     <Compile Include="Utils\ExcelDriver.cs" />
     <Compile Include="Utils\ExtentReport.cs" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CommonLibs.Implementations;
 using OpenQA.Selenium;
@@ -32,18 +33,19 @@ namespace Amazon_Application.Com.Amazon.Pages
             PageFactory.InitElements(driver, this);
         }
 
-        public void SearchProduct(String product, String category)
+        public string SearchProduct(String product, String category)
         {
-
+            Thread.Sleep(3000);
             elementControl.SetText(SearchBox, product);
 
+            Thread.Sleep(3000);
             dropdownControl.SelectViaVisibleText(SearchCategory, category);
 
             elementControl.ClickElement(SearchButton);
 
             string result = elementControl.GetText(SearchResult);
 
-            Console.WriteLine(value: result);
+            return result;
         }
     }
 }

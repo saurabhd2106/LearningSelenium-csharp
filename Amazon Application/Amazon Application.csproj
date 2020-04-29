@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amazon.Pages\AmazonHomePage.cs" />
+    <Compile Include="Demo\Class1.cs" />
     <Compile Include="GlobalSuppressions.cs" />
   </ItemGroup>
   <ItemGroup>

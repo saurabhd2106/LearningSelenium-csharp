@@ -16,7 +16,7 @@ namespace CommonLibs.Utils
 
         public ExtentReport(string htmlReportFilename)
         {
-            HtmlReporter = new ExtentHtmlReporter("/Reports/TestHtmlReport.html");
+            HtmlReporter = new ExtentHtmlReporter(htmlReportFilename);
             extentReports = new ExtentReports();
 
             extentReports.AttachReporter(HtmlReporter);
@@ -30,6 +30,11 @@ namespace CommonLibs.Utils
         public void AddTestLog(Status status, string comments)
         {
             extentTest.Log(status, comments);
+        }
+
+        public void AddScreenshotInReport(string filename)
+        {
+            extentTest.AddScreenCaptureFromPath(filename);
         }
 
         public void FlushExtentReports()

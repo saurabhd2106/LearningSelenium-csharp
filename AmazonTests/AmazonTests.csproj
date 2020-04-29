@@ -101,11 +101,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amazon.Tests\AmazonHomePageTests.cs" />
+    <Compile Include="Amazon.Tests\BaseTests.cs" />
     <Compile Include="Amazon.Tests\TestClass.cs" />
+    <Compile Include="Utils\AmazonTestData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TestData\" />
-    <Folder Include="Utils\" />
+    <Folder Include="Amazon.Tests\TestData\" />
+    <Folder Include="Reports\" />
+    <Folder Include="screenshots\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
