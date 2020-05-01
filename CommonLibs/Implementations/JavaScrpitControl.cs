@@ -8,23 +8,15 @@ using OpenQA.Selenium;
 
 namespace CommonLibs.Implementations
 {
-    class JavaScrpitControl : IJavaScriptControl
+    public class JavaScrpitControl : IJavaScriptControl
     {
-        IJavaScriptExecutor jsEngine;
+        private readonly IJavaScriptExecutor jsEngine;
 
-        public JavaScrpitControl(IWebDriver driver)
-        {
-            jsEngine = (IJavaScriptExecutor)driver;
-        }
-        public void executeJavaScript(string scriptToExecute)
-        {
-            jsEngine.ExecuteScript(scriptToExecute);
-        }
+        public JavaScrpitControl(IWebDriver driver) => jsEngine = (IJavaScriptExecutor)driver;
 
-        public string executeJavaScriptWithReturnValue(string scriptToExecute)
-        {
-            return jsEngine.ExecuteScript(scriptToExecute).ToString();
-        }
+        public void executeJavaScript(string scriptToExecute) => jsEngine.ExecuteScript(scriptToExecute);
+
+        public string executeJavaScriptWithReturnValue(string scriptToExecute) => jsEngine.ExecuteScript(scriptToExecute).ToString();
 
         public void scrollDown(int x, int y)
         {

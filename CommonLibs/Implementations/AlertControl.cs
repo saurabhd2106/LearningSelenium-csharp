@@ -4,36 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonLibs.Contracts;
+using CommonLibs.Utils;
 using OpenQA.Selenium;
 
 namespace CommonLibs.Implementations
 {
-    class AlertControl : IAlertControl
+    public class AlertControl : IAlertControl
     {
-        IAlert alert;
+        private readonly IWebDriver _driver;
 
-        public AlertControl(IWebDriver driver)
-        {
-             alert = driver.SwitchTo().Alert();
-        }
-        public void AcceptAlert()
-        {
-            alert.Accept();
-        }
+        public AlertControl(IWebDriver driver) => _driver = driver;
+        public void AcceptAlert() => _driver.SwitchTo().Alert().Accept();
 
-        public void CheckAlertIsPresent()
+        public bool CheckAlertIsPresent(int timeoutInSeconds)
         {
-            
-        }
-
-        public void DismissAlert()
-        {
-            alert.Dismiss();
+            try
+            {
+                WaitUtils.WaitTillAlertIsPresent(_driver, timeoutInSeconds);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        public string GetMessageFromAlert()
-        {
-            return alert.Text;
-        }
+        public void DismissAlert() => _driver.SwitchTo().Alert().Dismiss();
+
+        public string GetMessageFromAlert() => _driver.SwitchTo().Alert().Text;
     }
 }

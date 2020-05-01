@@ -4,41 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon_Application.Amazon.Pages;
 using CommonLibs.Implementations;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace Amazon_Application.Com.Amazon.Pages
 {
-    public class AmazonHomePage
+    public class AmazonHomePage : BasePage
     {
+        private IWebDriver _driver;
 
-        [FindsBy(How = How.Id, Using = "twotabsearchtextbox")]
-        private IWebElement SearchBox;
+        private IWebElement SearchBox => _driver.FindElement(By.Id("twotabsearchtextbox"));
 
-        [FindsBy(How = How.Id, Using = "searchDropdownBox")]
-        private IWebElement SearchCategory;
+        private IWebElement SearchCategory => _driver.FindElement(By.Id("searchDropdownBox"));
 
-        [FindsBy(How = How.XPath, Using = "//input[@value='Go']")]
-        private IWebElement SearchButton;
+        private IWebElement SearchButton => _driver.FindElement(By.XPath("//input[@value='Go']"));
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'results for')]")]
-        private IWebElement SearchResult;
+        private IWebElement SearchResult => _driver.FindElement(By.XPath("//span[contains(text(),'results for')]"));
 
-        ElementControl elementControl = new ElementControl();
-        DropDownControl dropdownControl = new DropDownControl();
+        
 
-        public AmazonHomePage(IWebDriver driver)
+        public AmazonHomePage(IWebDriver driver) : base(driver)
         {
-            PageFactory.InitElements(driver, this);
+            _driver = driver;
+
+            
         }
 
         public string SearchProduct(String product, String category)
         {
-            Thread.Sleep(3000);
+            bool isAlertPresent = alertControl.CheckAlertIsPresent(2);
+
+            Console.Write(isAlertPresent);
+
             elementControl.SetText(SearchBox, product);
 
-            Thread.Sleep(3000);
             dropdownControl.SelectViaVisibleText(SearchCategory, category);
 
             elementControl.ClickElement(SearchButton);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -31,10 +32,10 @@ namespace AmazonTests.Amazon.Tests
 
             extentReport.AddTestLog(Status.Info, "Category searched - " + category);
 
-            string url = "https://www.amazon.in";
+            string baseUrl = ConfigurationManager.AppSettings["baseUrl"];
 
-            cmnDriver.NavigateToFirstUrl(url);
-            extentReport.AddTestLog(Status.Info, "Navigating to URL - " + url);
+            cmnDriver.NavigateToFirstUrl(baseUrl);
+            extentReport.AddTestLog(Status.Info, "Navigating to URL - " + baseUrl);
 
             string actualResult = amazonHomePage.SearchProduct(product, category);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace CommonLibs.Implementations
             }
         }
 
-       
+
 
         public CommonDriver(string BrowserType)
         {
@@ -48,8 +49,23 @@ namespace CommonLibs.Implementations
             if (BrowserType.Equals("chrome"))
             {
 
-                Driver = new ChromeDriver();
+                ChromeOptions chromeOption = new ChromeOptions
+                {
+                    AcceptInsecureCertificates = true
+                };
 
+                enableDisableExtensionsInChromeBrowser(chromeOption);
+
+                chromeOption.AddArgument("disable-infobars");
+                Driver = new ChromeDriver(chromeOption);
+
+            }
+            else if (BrowserType.Equals("chrome-headless"))
+            {
+                ChromeOptions chromeOption = new ChromeOptions();
+
+                chromeOption.AddArgument("disable-infobars");
+                Driver = new ChromeDriver(chromeOption);
             }
             else if (BrowserType.Equals("firefox"))
             {
@@ -67,50 +83,47 @@ namespace CommonLibs.Implementations
 
 
         }
-        public void CloseAllBrowsers()
+
+        private void enableDisableExtensionsInChromeBrowser(ChromeOptions chromeOptions)
         {
-            if (Driver != null)
+            bool setChroPathExtensionEnable = Boolean.Parse(ConfigurationManager.AppSettings["enableChroPathExtension"]);
+
+            if (setChroPathExtensionEnable)
             {
-                Driver.Quit();
+                string chroPathExtentionPath = ConfigurationManager.AppSettings["pathOfChroPathExtension"];
+                chromeOptions.AddExtension(chroPathExtentionPath);
             }
+
         }
 
-        public void CloseBrowser()
-        {
-            if (Driver != null)
-            {
-                Driver.Close();
-            }
-        }
+        public void CloseAllBrowsers() => Driver?.Quit();
 
-        public string GetCurrentUrl()
-        {
-            return Driver.Url;
-        }
+        public void CloseBrowser() => Driver?.Close();
 
-        public string GetPageSource()
-        {
-            return Driver.PageSource;
-        }
 
-        public string GetTitle()
-        {
-            return Driver.Title;
-        }
+        public string GetCurrentUrl() => Driver.Url;
 
-        public void NavigateBackward()
-        {
-            Driver.Navigate().Back();
-        }
 
-        public void NavigateForward()
-        {
-            Driver.Navigate().Forward();
-        }
+        public string GetPageSource() => Driver.PageSource;
+
+
+        public string GetTitle() => Driver.Title;
+
+
+        public void NavigateBackward() => Driver.Navigate().Back();
+
+
+        public void NavigateForward() => Driver.Navigate().Forward();
 
         public void NavigateToFirstUrl(string url)
         {
             url = url.Trim();
+
+            if (!(url.StartsWith("https://") || url.StartsWith("http://")))
+            {
+
+                url = "https://" + url;
+            }
 
             Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(pageLoadTimeout);
 
@@ -126,9 +139,6 @@ namespace CommonLibs.Implementations
             Driver.Navigate().GoToUrl(url);
         }
 
-        public void Refresh()
-        {
-            Driver.Navigate().Refresh();
-        }
+        public void Refresh() => Driver.Navigate().Refresh();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,7 @@ namespace CommonLibs.Demo
         public void PreSetup()
         {
             executionStartTime = DateTimeUtils.GetCurrentDateAndTime();
-            currentWorkingDirectory = "D:/Users/Saurabh Dhingra/source/repos/Learning Selenium/AmazonTests";
-
-
+            currentWorkingDirectory = ConfigurationManager.AppSettings["currentWorkingDirectory"];
 
             extentReport = new ExtentReport($"{currentWorkingDirectory}/Reports/AmazonTestReport-{executionStartTime}.html");
 
@@ -48,7 +47,11 @@ namespace CommonLibs.Demo
         [SetUp]
         public void SetUp()
         {
+            string browserType = ConfigurationManager.AppSettings["browserType"];
             cmnDriver = new CommonDriver("chrome");
+
+            cmnDriver.PageLoadTimeout = Int32.Parse(ConfigurationManager.AppSettings["pageLoadTimeout"]);
+            cmnDriver.ElementDetectionTimeout = Int32.Parse(ConfigurationManager.AppSettings["elementDetectionTimeout"]);
 
             screenshotControl = new ScreenshotControl(cmnDriver.Driver);
 
@@ -88,5 +91,5 @@ namespace CommonLibs.Demo
         }
     }
 
-    
+
 }

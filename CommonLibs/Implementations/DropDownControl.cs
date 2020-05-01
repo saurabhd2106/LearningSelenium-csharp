@@ -12,24 +12,17 @@ namespace CommonLibs.Implementations
 {
     public class DropDownControl : IDropdown
     {
-
-
-        public void SelectViaIndex(IWebElement Element, int Index)
+        private SelectElement GetSelect(IWebElement element)
         {
-            SelectElement select = new SelectElement(Element);
-            select.SelectByIndex(Index);
-        }
+            SelectElement select = new SelectElement(element);
 
-        public void SelectViaValue(IWebElement Element, string Value)
-        {
-            SelectElement select = new SelectElement(Element);
-            select.SelectByValue(Value);
-        }
+            return select;
 
-        public void SelectViaVisibleText(IWebElement Element, string VisibleText)
-        {
-            SelectElement select = new SelectElement(Element);
-            select.SelectByText(VisibleText);
         }
+        public void SelectViaIndex(IWebElement Element, int Index) => GetSelect(Element).SelectByIndex(Index);
+
+        public void SelectViaValue(IWebElement Element, string Value) => GetSelect(Element).SelectByValue(Value);
+
+        public void SelectViaVisibleText(IWebElement Element, string VisibleText) => GetSelect(Element).SelectByText(VisibleText);
     }
 }

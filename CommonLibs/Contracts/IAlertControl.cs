@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace CommonLibs.Contracts
 {
-	interface IAlertControl
-	{
+    interface IAlertControl
+    {
 
-		void AcceptAlert();
+        void AcceptAlert();
 
-		void DismissAlert();
+        void DismissAlert();
 
         string GetMessageFromAlert();
 
-		void CheckAlertIsPresent();
+        bool CheckAlertIsPresent(int timeoutInSeconds);
 
-	}
+    }
 }

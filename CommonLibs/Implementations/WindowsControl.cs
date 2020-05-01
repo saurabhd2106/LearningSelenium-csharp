@@ -8,28 +8,17 @@ using OpenQA.Selenium;
 
 namespace CommonLibs.Implementations
 {
-    class WindowsControl : IWindowControl
+    public class WindowsControl : IWindowControl
     {
-        IWebDriver driver;
+        private readonly IWebDriver driver;
 
-        public WindowsControl(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
-        public string GetWindowHandle()
-        {
-            return driver.CurrentWindowHandle;
-        }
+        public WindowsControl(IWebDriver driver) => this.driver = driver;
 
-        public ISet<string> GetWindowHandles()
-        {
-            return driver.WindowHandles.ToHashSet();
-        }
+        public string GetWindowHandle() => driver.CurrentWindowHandle;
 
-        public void SwitchToAnyWindow(string WindowHandle)
-        {
-            driver.SwitchTo().Window(WindowHandle);
-        }
+        public ISet<string> GetWindowHandles() => driver.WindowHandles.ToHashSet();
+
+        public void SwitchToAnyWindow(string WindowHandle) => driver.SwitchTo().Window(WindowHandle);
 
         public void SwitchToAnyWindow(int Index)
         {

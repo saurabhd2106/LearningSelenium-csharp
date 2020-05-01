@@ -21,12 +21,12 @@ namespace CommonLibs.Implementations
         {
             _ = Filename.Trim();
 
-            if(File.Exists(Filename))
+            if (File.Exists(Filename))
             {
-                throw new Exception("File already exist.."+ Filename);
+                throw new Exception("File already exist.." + Filename);
             }
 
-           Screenshot screenshot = camera.GetScreenshot();
+            Screenshot screenshot = camera.GetScreenshot();
 
             screenshot.SaveAsFile(Filename);
 

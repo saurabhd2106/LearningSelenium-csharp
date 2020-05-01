@@ -14,57 +14,36 @@ namespace CommonLibs.Implementations
         {
             bool CurrentState = Element.Selected;
 
-            if(DesiredState != CurrentState)
+            if (DesiredState != CurrentState)
             {
                 Element.Click();
             }
         }
 
-        public void ClearText(IWebElement Element)
-        {
-            Element.Clear();
-        }
+        public void ClearText(IWebElement element) => element.Clear();
 
-        public void ClickElement(IWebElement Element)
-        {
 
-            Element.Click();
-           
-        }
+        public void ClickElement(IWebElement element) => element.Click();
 
-        public string GetAttribute(IWebElement Element, string attribute)
-        {
-          return  Element.GetAttribute(attribute);
-        }
 
-        public string GetCssValue(IWebElement Element, string cssProperty)
-        {
-            return Element.GetCssValue(cssProperty);
-        }
+        public string GetAttribute(IWebElement element, string attribute) => element.GetAttribute(attribute);
 
-        public string GetText(IWebElement Element)
-        {
-            return Element.Text;
-        }
 
-        public bool IsElementEnabled(IWebElement Element)
-        {
-            return Element.Enabled;
-        }
+        public string GetCssValue(IWebElement element, string cssProperty) => element.GetCssValue(cssProperty);
 
-        public bool IsElementSelected(IWebElement Element)
-        {
-            return Element.Selected;
-        }
 
-        public bool IsElementVisible(IWebElement Element)
-        {
-            return Element.Displayed;
-        }
+        public string GetText(IWebElement element) => element.Text;
 
-        public void SetText(IWebElement Element, string TextToWrite)
-        {
-            Element.SendKeys(TextToWrite);
-        }
+
+        public bool IsElementEnabled(IWebElement element) => element.Enabled;
+
+
+        public bool IsElementSelected(IWebElement element) => element.Selected;
+
+
+        public bool IsElementVisible(IWebElement Element) => Element.Displayed;
+
+        public void SetText(IWebElement Element, string TextToWrite) => Element.SendKeys(TextToWrite);
+
     }
 }
