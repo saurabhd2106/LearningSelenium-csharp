@@ -54,7 +54,7 @@ namespace CommonLibs.Implementations
                     AcceptInsecureCertificates = true
                 };
 
-                enableDisableExtensionsInChromeBrowser(chromeOption);
+              //  enableDisableExtensionsInChromeBrowser(chromeOption);
 
                 chromeOption.AddArgument("disable-infobars");
                 Driver = new ChromeDriver(chromeOption);
