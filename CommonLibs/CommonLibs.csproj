@@ -58,10 +58,10 @@
     <Compile Include="Implementations\FrameControl.cs" />
     <Compile Include="Implementations\ScreenshotControl.cs" />
     <Compile Include="Implementations\WindowsControl.cs" />
+    <Compile Include="Utils\DataBaseConnector.cs" />
     <Compile Include="Utils\DateTimeUtils.cs" />
     <Compile Include="Utils\ExcelDriver.cs" />
     <Compile Include="Utils\ExtentReport.cs" />
-    <Compile Include="Utils\IwebDriver.cs" />
     <Compile Include="Utils\WaitUtils.cs" />
   </ItemGroup>
   <ItemGroup>

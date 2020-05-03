@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonLibs.Implementations;
+using CommonLibs.Utils;
 
 namespace CommonLibs.Demo
 {
@@ -12,9 +13,7 @@ namespace CommonLibs.Demo
 
         static void Main(string[] args)
         {
-            CommonBrowserDriver.Driver.Url = "https://qatechhub.com";
-
-            CommonBrowserDriver.Driver.Close();
+            DataBaseConnector dbConnector = new DataBaseConnector("localhost","sakila","root","Gurgaon21!!");
 
             
         }
