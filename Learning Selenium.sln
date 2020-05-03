@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon Application", "Amazo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonTests", "AmazonTests\AmazonTests.csproj", "{057D6407-9E61-484F-BE9A-722C98FAA3AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guru99Application", "MultiApplication\Guru99Application.csproj", "{C3FA18CB-DE61-4C62-B756-F56FFE251FEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{057D6407-9E61-484F-BE9A-722C98FAA3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{057D6407-9E61-484F-BE9A-722C98FAA3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{057D6407-9E61-484F-BE9A-722C98FAA3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3FA18CB-DE61-4C62-B756-F56FFE251FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3FA18CB-DE61-4C62-B756-F56FFE251FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3FA18CB-DE61-4C62-B756-F56FFE251FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3FA18CB-DE61-4C62-B756-F56FFE251FEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

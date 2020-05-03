@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CommonLibs.Implementations;
 using OpenQA.Selenium;
 
-namespace Amazon_Application.Amazon.Pages
+namespace MultiApplication.Pages
 {
     public class BasePage
     {

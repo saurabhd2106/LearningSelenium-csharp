@@ -14,6 +14,7 @@ namespace CommonLibs.Implementations
         private readonly IWebDriver _driver;
 
         public AlertControl(IWebDriver driver) => _driver = driver;
+
         public void AcceptAlert() => _driver.SwitchTo().Alert().Accept();
 
         public bool CheckAlertIsPresent(int timeoutInSeconds)

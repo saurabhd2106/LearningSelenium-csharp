@@ -48,7 +48,7 @@ namespace CommonLibs.Demo
         public void SetUp()
         {
             string browserType = ConfigurationManager.AppSettings["browserType"];
-            cmnDriver = new CommonDriver("chrome");
+            cmnDriver = new CommonDriver(browserType);
 
             cmnDriver.PageLoadTimeout = Int32.Parse(ConfigurationManager.AppSettings["pageLoadTimeout"]);
             cmnDriver.ElementDetectionTimeout = Int32.Parse(ConfigurationManager.AppSettings["elementDetectionTimeout"]);
