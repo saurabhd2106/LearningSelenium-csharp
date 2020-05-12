@@ -13,7 +13,7 @@ namespace CommonLibs.Demo
 
         static void Main(string[] args)
         {
-            DataBaseConnector dbConnector = new DataBaseConnector("localhost","sakila","root","Gurgaon21!!");
+            DataBaseUtils dbConnector = new DataBaseUtils("localhost","testdata","root","Gurgaon21!!");
 
             
         }

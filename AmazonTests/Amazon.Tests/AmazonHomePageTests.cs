@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon_Application.Com.Amazon.Pages;
+using AmazonTests.Utils;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using CommonLibs.Demo;
@@ -22,10 +23,10 @@ namespace AmazonTests.Amazon.Tests
     {
 
         [Test]
-        [TestCase("IPhone", "Electronics")]
-        [TestCase("Table", "Furniture")]
+        [TestCaseSource(typeof(TestDataFromDatabase), "VerifyDataFromDatabase")]
         public void SearchProduct(string product, string category)
         {
+
             extentReport.CreateATestCase("Test case 001 - Search Product Functionality");
 
             extentReport.AddTestLog(Status.Info, "Product searched - " + product);
